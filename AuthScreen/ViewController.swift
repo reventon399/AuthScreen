@@ -13,14 +13,18 @@ class ViewController: UIViewController {
     //MARK: - Outlets
     
     private let backgroundView: UIImageView = {
-        let imageView = UIImageView()
-        
+        let image = UIImage(named: "background")
+        let imageView = UIImageView(image: image)
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
     private let loginLabel: UILabel = {
         let label = UILabel()
-        
+        label.text = "Login"
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 25)
         return label
     }()
     
