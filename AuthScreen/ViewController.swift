@@ -143,12 +143,12 @@ class ViewController: UIViewController {
         
         loginLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(view).inset(100)
+            make.top.equalTo(view).inset(150)
         }
         
         loginAndPasswordTextFieldStack.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(loginLabel.snp.bottom).offset(30)
+            make.top.equalTo(loginLabel.snp.bottom).offset(50)
             make.height.equalTo(90)
             make.left.equalTo(view).inset(50)
             make.right.equalTo(view).inset(50)
@@ -156,3 +156,15 @@ class ViewController: UIViewController {
     }
 }
 
+//MARK: - Extension
+
+extension UITextField {
+    func setLeftIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        iconView.image = image
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
+}
