@@ -34,6 +34,10 @@ class ViewController: UIViewController {
     
     private let loginTextField: UITextField = {
         let textField = UITextField()
+        let personImage = UIImage(systemName: "person")
+        let markImage = UIImage(systemName: "checkmark.circle.fill")
+        textField.setLeftIcon(personImage!)
+        textField.setRightIcon(markImage!)
         textField.backgroundColor = .white
         textField.placeholder = "losevalexey15"
         textField.layer.cornerRadius = 20
@@ -43,7 +47,9 @@ class ViewController: UIViewController {
     }()
     
     private let passwordTextField: UITextField = {
-       let textField = UITextField()
+        let textField = UITextField()
+        let image = UIImage(systemName: "lock")
+        textField.setLeftIcon(image!)
         textField.backgroundColor = .white
         textField.placeholder = "Password"
         textField.layer.cornerRadius = 20
@@ -177,9 +183,8 @@ class ViewController: UIViewController {
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign up", for: .normal)
-        button.backgroundColor = UIColor(named: "loginButtonColor")
         button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
-        button.tintColor = .purple
+        button.tintColor = UIColor(named: "loginButtonColor")
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
@@ -302,11 +307,23 @@ class ViewController: UIViewController {
 
 extension UITextField {
     func setLeftIcon(_ image: UIImage) {
-        let iconView = UIImageView(frame: CGRect(x: 10, y: 5, width: 20, height: 20))
+        let iconView = UIImageView(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
         iconView.image = image
-        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 30, height: 30))
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 80, height: 30))
         iconContainerView.addSubview(iconView)
+        iconContainerView.tintColor = .systemGray
         leftView = iconContainerView
         leftViewMode = .always
     }
+    func setRightIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame: CGRect(x: 30, y: 5, width: 20, height: 20))
+        iconView.image = image
+        let iconContainerView: UIView = UIView(frame: CGRect(x: 20, y: 0, width: 60, height: 30))
+        iconContainerView.addSubview(iconView)
+        rightView = iconContainerView
+        iconContainerView.tintColor = .systemGreen
+        rightViewMode = .always
+    }
 }
+
+
