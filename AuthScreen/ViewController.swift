@@ -94,6 +94,7 @@ class ViewController: UIViewController {
        let view = UIView()
         view.backgroundColor = .black
         view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
     
@@ -104,6 +105,7 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
@@ -116,14 +118,47 @@ class ViewController: UIViewController {
     
     private let facebookButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.setTitle("Facebook", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 20
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
     
     private let twitterButton: UIButton = {
         let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.setTitle("Twitter", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 20
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.3
+        button.layer.shadowOffset = .zero
+        button.layer.shadowRadius = 10
+        button.layer.shouldRasterize = true
+        button.layer.rasterizationScale = UIScreen.main.scale
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
+    }()
+    
+    private let facebookAndTwitterButtonsStack: UIStackView = {
+       let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }()
     
     private let dontHaveAnAccountLabel: UILabel = {
@@ -160,6 +195,9 @@ class ViewController: UIViewController {
         view.addSubview(leftFromOrConnectWithLabelView)
         view.addSubview(orConnectWithLabel)
         view.addSubview(rightFromOrConnectWithLabelView)
+        view.addSubview(facebookAndTwitterButtonsStack)
+        facebookAndTwitterButtonsStack.addArrangedSubview(facebookButton)
+        facebookAndTwitterButtonsStack.addArrangedSubview(twitterButton)
     }
     
     private func setupLayout() {
@@ -212,6 +250,14 @@ class ViewController: UIViewController {
             make.width.equalTo(100)
             make.right.equalTo(-50)
             make.left.equalTo(orConnectWithLabel.snp.right).offset(10)
+        }
+        
+        facebookAndTwitterButtonsStack.snp.makeConstraints { make in
+            make.centerX.equalTo(orConnectWithLabel.snp.centerX)
+            make.top.equalTo(orConnectWithLabel.snp.bottom).offset(20)
+            make.left.equalTo(view).offset(50)
+            make.height.equalTo(40)
+//            make.right.equalTo(view).offset(-50)
         }
     }
 }
