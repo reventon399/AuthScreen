@@ -57,7 +57,7 @@ class ViewController: UIViewController {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .fill
-        stackView.spacing = 20
+        stackView.spacing = 15
         stackView.translatesAutoresizingMaskIntoConstraints = false
         
         return stackView
@@ -65,6 +65,11 @@ class ViewController: UIViewController {
     
     private let loginButton: UIButton = {
        let button = UIButton()
+        button.backgroundColor = .systemBlue
+        button.setTitle("Login", for: .normal)
+        button.setTitleColor(UIColor.white, for: .normal)
+        button.layer.cornerRadius = 20
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
@@ -134,6 +139,7 @@ class ViewController: UIViewController {
         view.addSubview(loginAndPasswordTextFieldStack)
         loginAndPasswordTextFieldStack.addArrangedSubview(loginTextField)
         loginAndPasswordTextFieldStack.addArrangedSubview(passwordTextField)
+        view.addSubview(loginButton)
     }
     
     private func setupLayout() {
@@ -148,10 +154,18 @@ class ViewController: UIViewController {
         
         loginAndPasswordTextFieldStack.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(loginLabel.snp.bottom).offset(50)
-            make.height.equalTo(90)
+            make.top.equalTo(loginLabel.snp.bottom).offset(60)
+            make.height.equalTo(100)
             make.left.equalTo(view).inset(50)
             make.right.equalTo(view).inset(50)
+        }
+        
+        loginButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(loginAndPasswordTextFieldStack.snp.bottom).offset(50)
+            make.left.equalTo(view).inset(50)
+            make.right.equalTo(view).inset(50)
+            make.height.equalTo(50)
         }
     }
 }
