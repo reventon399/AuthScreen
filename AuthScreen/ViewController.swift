@@ -120,7 +120,7 @@ class ViewController: UIViewController {
     
     private let facebookButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(named: "facebookButtonColor")
         button.setTitle("Facebook", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 20
@@ -137,7 +137,7 @@ class ViewController: UIViewController {
     
     private let twitterButton: UIButton = {
         let button = UIButton(type: .system)
-        button.backgroundColor = .systemBlue
+        button.backgroundColor = UIColor(named: "twitterButtonColor")
         button.setTitle("Twitter", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 20
@@ -177,6 +177,7 @@ class ViewController: UIViewController {
     private let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign up", for: .normal)
+        button.backgroundColor = UIColor(named: "loginButtonColor")
         button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
         button.tintColor = .purple
         button.translatesAutoresizingMaskIntoConstraints = false
