@@ -94,19 +94,31 @@ class ViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        setupHierarchy()
+        setupLayout()
     }
     
     // MARK: - Setup
     
     private func setupHierarchy() {
-        
+        view.addSubview(backgroundView)
+        view.addSubview(loginLabel)
     }
     
     private func setupLayout() {
+        backgroundView.snp.makeConstraints { make in
+            make.center.equalTo(view)
+        }
         
+        loginLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(backgroundView)
+            make.top.equalTo(backgroundView.snp.top).inset(175)
+        }
     }
 }
 
