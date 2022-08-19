@@ -73,6 +73,7 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(named: "loginButtonColor")
         button.setTitle("Login", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
         button.setTitleColor(UIColor.white, for: .normal)
         button.layer.cornerRadius = 20
         button.layer.shadowColor = UIColor.black.cgColor
@@ -243,7 +244,7 @@ class ViewController: UIViewController {
         
         loginLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(view).inset(150)
+            make.top.equalTo(view).inset(100)
         }
         
         loginAndPasswordTextFieldStack.snp.makeConstraints { make in
@@ -268,7 +269,7 @@ class ViewController: UIViewController {
         }
         
         leftFromOrConnectWithLabelView.snp.makeConstraints { make in
-            make.centerY.equalTo(forgotYourPasswordButton.snp.bottom).offset(175)
+            make.centerY.equalTo(forgotYourPasswordButton.snp.bottom).offset(200)
             make.height.equalTo(1)
             make.width.equalTo(100)
             make.left.equalTo(50)
@@ -276,12 +277,12 @@ class ViewController: UIViewController {
         
         orConnectWithLabel.snp.makeConstraints { make in
             make.centerX.equalTo(view)
-            make.top.equalTo(forgotYourPasswordButton.snp.bottom).offset(167)
+            make.top.equalTo(forgotYourPasswordButton.snp.bottom).offset(193)
             make.left.equalTo(leftFromOrConnectWithLabelView.snp.right).offset(10)
         }
         
         rightFromOrConnectWithLabelView.snp.makeConstraints { make in
-            make.centerY.equalTo(forgotYourPasswordButton.snp.bottom).offset(175)
+            make.centerY.equalTo(forgotYourPasswordButton.snp.bottom).offset(200)
             make.height.equalTo(1)
             make.width.equalTo(100)
             make.right.equalTo(-50)
