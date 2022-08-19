@@ -92,19 +92,25 @@ class ViewController: UIViewController {
     
     private let leftFromOrConnectWithLabelView: UIView = {
        let view = UIView()
-        
+        view.backgroundColor = .black
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let orConnectWithLabel: UILabel = {
        let label = UILabel()
-        
+        label.text = "or connect with"
+        label.tintColor = .systemGray
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private let rightFromOrConnectWithLabelView: UIView = {
        let view = UIView()
-        
+        view.backgroundColor = .black
+        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
@@ -151,6 +157,9 @@ class ViewController: UIViewController {
         loginAndPasswordTextFieldStack.addArrangedSubview(passwordTextField)
         view.addSubview(loginButton)
         view.addSubview(forgotYourPasswordButton)
+        view.addSubview(leftFromOrConnectWithLabelView)
+        view.addSubview(orConnectWithLabel)
+        view.addSubview(rightFromOrConnectWithLabelView)
     }
     
     private func setupLayout() {
@@ -182,6 +191,27 @@ class ViewController: UIViewController {
         forgotYourPasswordButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
             make.top.equalTo(loginButton.snp.bottom).offset(15)
+        }
+        
+        leftFromOrConnectWithLabelView.snp.makeConstraints { make in
+            make.centerY.equalTo(forgotYourPasswordButton.snp.bottom).offset(175)
+            make.height.equalTo(1)
+            make.width.equalTo(100)
+            make.left.equalTo(50)
+        }
+        
+        orConnectWithLabel.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(forgotYourPasswordButton.snp.bottom).offset(167)
+            make.left.equalTo(leftFromOrConnectWithLabelView.snp.right).offset(10)
+        }
+        
+        rightFromOrConnectWithLabelView.snp.makeConstraints { make in
+            make.centerY.equalTo(forgotYourPasswordButton.snp.bottom).offset(175)
+            make.height.equalTo(1)
+            make.width.equalTo(100)
+            make.right.equalTo(-50)
+            make.left.equalTo(orConnectWithLabel.snp.right).offset(10)
         }
     }
 }
