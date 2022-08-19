@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     //MARK: - Outlets
     
     private let backgroundView: UIImageView = {
-        let image = UIImage(named: "background")
+        let image = UIImage(named: "background1")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
     private let forgotYourPasswordButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Forgot your password?", for: .normal)
-        button.tintColor = .white
+        button.tintColor = .systemGray
         button.alpha = 0.5
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -92,7 +92,8 @@ class ViewController: UIViewController {
     
     private let leftFromOrConnectWithLabelView: UIView = {
        let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .systemGray
+        view.alpha = 0.2
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -101,8 +102,8 @@ class ViewController: UIViewController {
     private let orConnectWithLabel: UILabel = {
        let label = UILabel()
         label.text = "or connect with"
-        label.tintColor = .systemGray
         label.textAlignment = .center
+        label.textColor = .systemGray
         label.font = UIFont.systemFont(ofSize: 10)
         label.translatesAutoresizingMaskIntoConstraints = false
         
@@ -111,13 +112,14 @@ class ViewController: UIViewController {
     
     private let rightFromOrConnectWithLabelView: UIView = {
        let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = .systemGray
+        view.alpha = 0.2
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private let facebookButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = .systemBlue
         button.setTitle("Facebook", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -134,7 +136,7 @@ class ViewController: UIViewController {
     }()
     
     private let twitterButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = .systemBlue
         button.setTitle("Twitter", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -163,14 +165,34 @@ class ViewController: UIViewController {
     
     private let dontHaveAnAccountLabel: UILabel = {
        let label = UILabel()
+        label.text = "Dont have account?"
+        label.textAlignment = .center
+        label.textColor = .systemGray
+        label.font = UIFont.systemFont(ofSize: 10)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
     
     private let signUpButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton(type: .system)
+        button.setTitle("Sign up", for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 10)
+        button.tintColor = .purple
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
+    }()
+    
+    private let dontHaveAnAccountLabelAndsignUpButtonStack: UIStackView = {
+       let stackView = UIStackView()
+        stackView.axis = .horizontal
+        stackView.distribution = .fill
+        stackView.alignment = .center
+        stackView.spacing = -10
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }()
     
     // MARK: - Lifecycle
@@ -182,7 +204,7 @@ class ViewController: UIViewController {
         setupLayout()
     }
     
-    // MARK: - Setup
+    // MARK: - Setup Hierarchy
     
     private func setupHierarchy() {
         view.addSubview(backgroundView)
@@ -198,11 +220,19 @@ class ViewController: UIViewController {
         view.addSubview(facebookAndTwitterButtonsStack)
         facebookAndTwitterButtonsStack.addArrangedSubview(facebookButton)
         facebookAndTwitterButtonsStack.addArrangedSubview(twitterButton)
+        view.addSubview(dontHaveAnAccountLabelAndsignUpButtonStack)
+        dontHaveAnAccountLabelAndsignUpButtonStack.addArrangedSubview(dontHaveAnAccountLabel)
+        dontHaveAnAccountLabelAndsignUpButtonStack.addArrangedSubview(signUpButton)
     }
+    
+    // MARK: - Setup Layout
     
     private func setupLayout() {
         backgroundView.snp.makeConstraints { make in
-            make.center.equalTo(view)
+            make.top.equalTo(view).offset(-60)
+            make.bottom.equalTo(view).offset(10)
+            make.left.equalTo(view).offset(-10)
+            make.right.equalTo(view).offset(60)
         }
         
         loginLabel.snp.makeConstraints { make in
@@ -257,7 +287,12 @@ class ViewController: UIViewController {
             make.top.equalTo(orConnectWithLabel.snp.bottom).offset(20)
             make.left.equalTo(view).offset(50)
             make.height.equalTo(40)
-//            make.right.equalTo(view).offset(-50)
+        }
+        
+        dontHaveAnAccountLabelAndsignUpButtonStack.snp.makeConstraints { make in
+            make.centerX.equalTo(facebookAndTwitterButtonsStack.snp.centerX)
+            make.top.equalTo(facebookAndTwitterButtonsStack.snp.bottom).offset(20)
+            make.left.equalTo(view).offset(125)
         }
     }
 }
