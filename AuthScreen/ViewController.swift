@@ -64,7 +64,7 @@ class ViewController: UIViewController {
     }()
     
     private let loginButton: UIButton = {
-       let button = UIButton()
+        let button = UIButton(type: .system)
         button.backgroundColor = .systemBlue
         button.setTitle("Login", for: .normal)
         button.setTitleColor(UIColor.white, for: .normal)
@@ -75,7 +75,11 @@ class ViewController: UIViewController {
     }()
     
     private let forgotYourPasswordButton: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
+        button.setTitle("Forgot your password?", for: .normal)
+        button.tintColor = .white
+        button.alpha = 0.5
+        button.translatesAutoresizingMaskIntoConstraints = false
         
         return button
     }()
@@ -140,6 +144,7 @@ class ViewController: UIViewController {
         loginAndPasswordTextFieldStack.addArrangedSubview(loginTextField)
         loginAndPasswordTextFieldStack.addArrangedSubview(passwordTextField)
         view.addSubview(loginButton)
+        view.addSubview(forgotYourPasswordButton)
     }
     
     private func setupLayout() {
@@ -166,6 +171,11 @@ class ViewController: UIViewController {
             make.left.equalTo(view).inset(50)
             make.right.equalTo(view).inset(50)
             make.height.equalTo(50)
+        }
+        
+        forgotYourPasswordButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(loginButton.snp.bottom).offset(15)
         }
     }
 }
