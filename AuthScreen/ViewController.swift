@@ -16,6 +16,8 @@ class ViewController: UIViewController {
         let image = UIImage(named: "background")
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         return imageView
     }()
     
@@ -25,19 +27,40 @@ class ViewController: UIViewController {
         label.textColor = .white
         label.textAlignment = .center
         label.font = UIFont.boldSystemFont(ofSize: 30)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
         return label
     }()
     
     private let loginTextField: UITextField = {
         let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.placeholder = "losevalexey15"
+        textField.layer.cornerRadius = 20
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
     }()
     
     private let passwordTextField: UITextField = {
        let textField = UITextField()
+        textField.backgroundColor = .white
+        textField.placeholder = "Password"
+        textField.layer.cornerRadius = 20
+        textField.translatesAutoresizingMaskIntoConstraints = false
         
         return textField
+    }()
+    
+    private let loginAndPasswordTextFieldStack: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.distribution = .fillEqually
+        stackView.alignment = .fill
+        stackView.spacing = 20
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stackView
     }()
     
     private let loginButton: UIButton = {
@@ -108,6 +131,9 @@ class ViewController: UIViewController {
     private func setupHierarchy() {
         view.addSubview(backgroundView)
         view.addSubview(loginLabel)
+        view.addSubview(loginAndPasswordTextFieldStack)
+        loginAndPasswordTextFieldStack.addArrangedSubview(loginTextField)
+        loginAndPasswordTextFieldStack.addArrangedSubview(passwordTextField)
     }
     
     private func setupLayout() {
@@ -116,8 +142,16 @@ class ViewController: UIViewController {
         }
         
         loginLabel.snp.makeConstraints { make in
-            make.centerX.equalTo(backgroundView)
-            make.top.equalTo(backgroundView.snp.top).inset(175)
+            make.centerX.equalTo(view)
+            make.top.equalTo(view).inset(100)
+        }
+        
+        loginAndPasswordTextFieldStack.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+            make.top.equalTo(loginLabel.snp.bottom).offset(30)
+            make.height.equalTo(90)
+            make.left.equalTo(view).inset(50)
+            make.right.equalTo(view).inset(50)
         }
     }
 }
