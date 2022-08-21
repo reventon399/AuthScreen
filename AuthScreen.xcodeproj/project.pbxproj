@@ -56,14 +56,46 @@
 		91C213BE28AE2F40000FBACA /* AuthScreen */ = {
 			isa = PBXGroup;
 			children = (
+				91C213F828B03225000FBACA /* App */,
+				91C213F928B03240000FBACA /* Sources */,
+				91C213F728B031EE000FBACA /* Configuration */,
+				91C213F628B031D5000FBACA /* Resources */,
+			);
+			path = AuthScreen;
+			sourceTree = "<group>";
+		};
+		91C213F628B031D5000FBACA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				91C213C828AE2F43000FBACA /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		91C213F728B031EE000FBACA /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				91C213CD28AE2F43000FBACA /* Info.plist */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		91C213F828B03225000FBACA /* App */ = {
+			isa = PBXGroup;
+			children = (
 				91C213BF28AE2F40000FBACA /* AppDelegate.swift */,
 				91C213C128AE2F40000FBACA /* SceneDelegate.swift */,
 				91C213C328AE2F40000FBACA /* ViewController.swift */,
-				91C213C828AE2F43000FBACA /* Assets.xcassets */,
-				91C213CA28AE2F43000FBACA /* LaunchScreen.storyboard */,
-				91C213CD28AE2F43000FBACA /* Info.plist */,
 			);
-			path = AuthScreen;
+			path = App;
+			sourceTree = "<group>";
+		};
+		91C213F928B03240000FBACA /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				91C213CA28AE2F43000FBACA /* LaunchScreen.storyboard */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
